@@ -97,6 +97,7 @@
     <string name="sec">Заботьтесь о них \n правильно</string>
     <string name="third">Никогда не забывайте \n про них</string>
     <string name="cat">Каталог</string>
+    <string name="title_activity_my_plants">MyPlants</string>
 
 
 </resources>

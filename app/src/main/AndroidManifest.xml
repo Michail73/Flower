@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.michael.flower">
+
     <!-- было написано viewpager, вместо flower -->
     <application
         android:name=".Michael"
@@ -20,7 +21,11 @@
             android:name=".Catalog"
             android:label="@string/title_activity_catalog"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Aboutflower"></activity>
+        <activity android:name=".Aboutflower" />
+        <activity
+            android:name=".MyPlants"
+            android:label="@string/title_activity_my_plants"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

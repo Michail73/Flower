@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.michael.flower.MyPlants">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:title="Мои растения"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:subtitle="Мои растения" />
+
+
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:src="@drawable/daisy"
+        android:scaleType="fitXY"
+        android:id="@+id/first"
+
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/blue"
+        android:layout_below="@id/first"
+        android:scaleType="fitXY"
+        android:id="@+id/second"
+
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_below="@id/second"
+        android:scaleType="fitXY"
+        android:layout_marginTop="16dp"
+        android:id="@+id/third"
+        android:src="@drawable/pink"
+        />
+    </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <include layout="@layout/content_my_plants" />
+
+</android.support.design.widget.CoordinatorLayout>
