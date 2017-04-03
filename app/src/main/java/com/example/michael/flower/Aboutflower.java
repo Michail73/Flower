@@ -1,5 +1,7 @@
 package com.example.michael.flower;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
@@ -88,5 +90,19 @@ public class Aboutflower extends AppCompatActivity {
             }
         };
         feeding.setOnClickListener(oclFeeding);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.float_button);
+        View.OnClickListener oclfab = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Aboutflower.this, Addition.class);
+                startActivity(intent);
+            }
+        };
+
+        fab.setOnClickListener(oclfab);
     }
+
+
+
 }
