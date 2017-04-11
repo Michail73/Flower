@@ -81,13 +81,23 @@
             android:id="@+id/lastwater"
             android:hint="Дата последнего полива"
             />
-        <Spinner
-            android:layout_width="match_parent"
+        <EditText
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:id="@+id/date1"
+            android:inputType="date"
             android:layout_below="@+id/lastwater">
 
-        </Spinner>
+        </EditText>
+        <Button
+            android:id="@+id/btn_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="жмяк"
+            android:layout_below="@+id/lastwater"
+            android:layout_toRightOf="@id/date1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
         <TextView
             android:layout_marginLeft="5dp"
             android:layout_marginTop="16dp"

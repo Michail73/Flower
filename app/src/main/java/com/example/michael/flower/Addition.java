@@ -1,32 +1,35 @@
 package com.example.michael.flower;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-public class Addition extends AppCompatActivity {
+import java.util.Calendar;
+
+public class Addition extends AppCompatActivity implements View.OnClickListener {
 
 
 //    Spinner spinnerdate1;
 //    Button btn;
 //    int year_x,moth_x,day_x;
 //    static final  int DIALOG_ID = 0;
+    private Button btnDatePicker;
+    private EditText editTextDate;
+
+    // делаем переменные даты/времени полями, т.к. в реальных
+
+    private int mYear, mMonth, mDay, mHour, mMinute;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -38,6 +41,16 @@ public class Addition extends AppCompatActivity {
         setTitle("Добавление");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        btnDatePicker = (Button) findViewById(R.id.btn_date);
+        editTextDate = (EditText) findViewById(R.id.date1);
+
+
+//        View.OnClickListener datebtn {
+//                callDatePicker();
+//        }
+
+        btnDatePicker.setOnClickListener(this);
 
 //        final Calendar cal = Calendar.getInstance();
 //        year_x = cal.get(Calendar.YEAR);
@@ -76,6 +89,39 @@ public class Addition extends AppCompatActivity {
 
     }
 
+
+
+    public void onClick(View v) {
+        int id = v.getId();
+
+        switch (id) {
+            case R.id.btn_date:
+                // вызываем диалог с выбором даты
+                callDatePicker();
+                break;
+
+
+        }
+    }
+
+    private void callDatePicker() {
+        // получаем текущую дату
+        final Calendar cal = Calendar.getInstance();
+        mYear = cal.get(Calendar.YEAR);
+        mMonth = cal.get(Calendar.MONTH);
+        mDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        // инициализируем диалог выбора даты текущими значениями
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        String editTextDateParam = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
+                        editTextDate.setText(editTextDateParam);
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
+    }
 
 //    public void showDialogOnSpinner(){
 //        btn = (Button) findViewById(R.id.button4);
