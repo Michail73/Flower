@@ -20,157 +20,135 @@
 
             />
 
-
-        <!--<Button-->
-            <!--android:id="@+id/button3"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentEnd="true"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_weight="1"-->
-            <!--android:textSize="4pt"-->
-            <!--android:text="Сохранить" />-->
-
-
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_addition"
         android:id="@+id/include" />
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
+
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_marginTop="24dp"
-            android:id="@+id/picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/greyflower" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/picture"
-            android:hint="Название"
-             />
+            <ImageView
+                android:id="@+id/picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/greyflower" />
 
-        <EditText
-            android:layout_marginTop="10dp"
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/name"
-            android:hint="Описание" />
-        <CalendarView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="onClick"
-            android:id="@+id/calendarView"
-            android:visibility="gone"
-            ></CalendarView>
-        <TextView
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_below="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lastwater"
-            android:hint="Дата последнего полива"
-            />
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/date1"
-            android:inputType="date"
-            android:layout_below="@+id/lastwater">
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/picture"
+                android:hint="Название" />
 
-        </EditText>
-        <Button
-            android:id="@+id/btn_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="жмяк"
-            android:layout_below="@+id/lastwater"
-            android:layout_toRightOf="@id/date1"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-        <TextView
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/date1"
-            android:id="@+id/lastfeeding"
-            android:hint="Дата последней подкормки"
-            />
-        <Spinner
-            android:layout_below="@+id/lastfeeding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/date2"></Spinner>
-        <TextView
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/date2"
-            android:id="@+id/text"
-            android:textColor="@color/colorblack"
-            android:text="Вы можете самостоятельно установить частоту \n напоминаний. По умолчанию приложение сделает\n это за вас."
-            />
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_marginTop="10dp"
+                android:hint="Описание" />
 
-        <TextView
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text"
-            android:id="@+id/frequency"
-            android:hint="Частота полива"
 
-            />
-        <Spinner
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/frequency"
-            android:id="@+id/spinner">
+            <TextView
+                android:id="@+id/lastwater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:hint="Дата последнего полива" />
 
-        </Spinner>
+            <EditText
+                android:id="@+id/date1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lastwater"
+                android:focusable="false"
+                android:hint="дд.мм.гггг"
+                android:focusableInTouchMode="false"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner">
+            </EditText>
+            <TextView
+                android:id="@+id/lastfeeding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:hint="Дата последней подкормки" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:id="@+id/feeding"
-            android:hint="Частота подкормки"
-            android:layout_below="@+id/spinner"
-            />
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/feeding"
-            android:id="@+id/spinner2"
-            ></Spinner>
-        <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner2"
-        android:textSize="4pt"
-        android:text="Сохранить" />
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button3"
-            android:textSize="4pt"
-            android:text="дата" />
+            <EditText
+                android:id="@+id/date2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lastfeeding"
+                android:focusable="false"
+                android:hint="дд.мм.гггг"
+                android:focusableInTouchMode="false"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"
+                android:inputType="date"></EditText>
 
-    </RelativeLayout>
-</ScrollView>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date2"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Вы можете самостоятельно установить частоту \n напоминаний. По умолчанию приложение сделает\n это за вас."
+                android:textColor="@color/colorblack" />
+
+            <TextView
+                android:id="@+id/frequency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:hint="Частота полива"
+
+                />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frequency"
+                android:layout_marginTop="16dp">
+
+            </Spinner>
+
+            <TextView
+                android:id="@+id/feeding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner"
+                android:layout_marginTop="8dp"
+                android:hint="Частота подкормки" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/feeding"></Spinner>
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner2"
+                android:text="Сохранить"
+                android:textSize="4pt" />
+
+
+        </RelativeLayout>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>
