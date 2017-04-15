@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Display;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,15 +23,7 @@ import java.util.Calendar;
 
 public class Addition extends AppCompatActivity {
 
-
-//    Spinner spinnerdate1;
-//    Button btn;
-//    int year_x,moth_x,day_x;
-//    static final  int DIALOG_ID = 0;
-
     private EditText editTextDate, editTextDate2;
-
-    Spinner spinner;
 
     // делаем переменные даты/времени полями, т.к. в реальных
 
@@ -42,9 +37,14 @@ public class Addition extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbaredit);
         setSupportActionBar(toolbar);
+//        Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+//        setSupportActionBar(mActionBarToolbar);
         setTitle("Добавление");
+
+
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -73,7 +73,7 @@ public class Addition extends AppCompatActivity {
 
 
 
-        spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.days, android.R.layout.simple_spinner_item);
@@ -89,7 +89,7 @@ public class Addition extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
 
-        Button savebtn = (Button) findViewById(R.id.button3);
+        Button savebtn = (Button) findViewById(R.id.save);
 
 
                 View.OnClickListener oclbtn = new View.OnClickListener() {
@@ -103,20 +103,6 @@ public class Addition extends AppCompatActivity {
         savebtn.setOnClickListener(oclbtn);
 
     }
-
-
-//    public void onClick(View v) {
-//        int id = v.getId();
-//
-//        switch (id) {
-//            case R.id.btn_date:
-//                // вызываем диалог с выбором даты
-//                callDatePicker();
-//                break;
-//
-//
-//        }
-//    }
 
     private void callDatePicker() {
         // получаем текущую дату
@@ -144,6 +130,13 @@ public class Addition extends AppCompatActivity {
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
+        return true;
+    }
+
 
 
 }

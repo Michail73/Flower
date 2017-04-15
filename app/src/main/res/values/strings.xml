@@ -30,6 +30,7 @@
     <string name="cat">Каталог</string>
     <string name="title_activity_my_plants">MyPlants</string>
     <string name="title_activity_addition">Addition</string>
+    <string name="search_hint">поиск</string>
 
     <string-array name="days">
         <item>1 день</item>
