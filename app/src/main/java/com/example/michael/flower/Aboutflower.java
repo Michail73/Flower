@@ -6,15 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
-import static com.example.michael.flower.R.id.toolbar;
 
 public class Aboutflower extends AppCompatActivity {
 
@@ -42,53 +38,140 @@ public class Aboutflower extends AppCompatActivity {
         boolean flag = false;
         RelativeLayout description = (RelativeLayout) findViewById(R.id.short_description);
         final TextView sub_description = (TextView) findViewById(R.id.short_des_text);
+        final TextView text_lighting = (TextView) findViewById(R.id.lightning_text);
+        final TextView text_temperature =(TextView) findViewById(R.id.temperature_text);
+        final TextView water_text2= (TextView) findViewById(R.id.watering_text);
+        final TextView feeding_text = (TextView) findViewById(R.id.feeding_text);
 
         switch (title){
             case "Абелия":
-                View.OnClickListener oclDescription = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
 
-                        if(sub_description.getVisibility() != view.VISIBLE) {
-                            sub_description.setVisibility(View.VISIBLE);
-                            sub_description.setText("тест тест");
-                        }
-                        else
-                        {
-                            sub_description.setVisibility(View.GONE);
-                        }
-                    }
-
-                };
-                description.setOnClickListener(oclDescription);
+                sub_description.setText(getString(R.string.abelia_description));
+                text_lighting.setText(R.string.abelia_lighting);
+                text_temperature.setText(R.string.abelia_temperature);
+                water_text2.setText(R.string.abelia_water);
+                feeding_text.setText(R.string.abelia_feeding);
                 break;
 
+            case "Абелиолистник":
+                sub_description.setText(R.string.abeliolistnik_description);
+                text_lighting.setText(R.string.abeliolistnik_lighting);
+                text_temperature.setText(R.string.abeliolistnik_temp);
+                water_text2.setText("Обильный полив 2-3 раза в неделю");
+                feeding_text.setText("Редкие подкормки");
+                break;
+            case "Абрикос":
+                sub_description.setText(R.string.abrikos_desription);
+                text_lighting.setText(R.string.abrikos_lighting);
+                text_temperature.setText(R.string.abrikos_temp);
+                water_text2.setText(R.string.abrikos_water);
+                feeding_text.setText(R.string.abrikos_feeding);
+                break;
+            case "Абутилон":
+                sub_description.setText(R.string.abutulion_description);
+                text_lighting.setText(R.string.abutulion_lighting);
+                text_temperature.setText(R.string.abutulion_temp);
+                water_text2.setText(R.string.abutulion_water);
+                feeding_text.setText(R.string.abutulion_feeding);
+                break;
+            case "Аверроа карамбола":
+                sub_description.setText(R.string.carambola_description);
+                text_lighting.setText(R.string.carambola_lighting);
+                text_temperature.setText(R.string.carambola_temp);
+                water_text2.setText(R.string.carambola_water);
+                feeding_text.setText(R.string.carambola_feeding);
+                break;
+            case "Авокадо приятнейшее":
+                sub_description.setText(R.string.avokado_description);
+                text_lighting.setText(R.string.avokado_lighting);
+                text_temperature.setText(R.string.avokado_temp);
+                water_text2.setText(R.string.avokado_water);
+                feeding_text.setText(R.string.avokado_feeding);
+                break;
+            case "Агава американская":
+                sub_description.setText(R.string.agava_description);
+                text_lighting.setText(R.string.agava_lighting);
+                text_temperature.setText(R.string.agava_temp);
+                water_text2.setText(R.string.agava_water);
+                feeding_text.setText(R.string.agava_feeding);
+                break;
+            case "Агава королевы Виктории":
+                sub_description.setText(R.string.agavaVic_description);
+                text_lighting.setText(R.string.agavaVic_lighting);
+                text_temperature.setText(R.string.agavaVic_temp);
+                water_text2.setText(R.string.agavaVic_water);
+                feeding_text.setText(R.string.agavaVic_feeding);
+                break;
+
+            case "Агапантус":
+                sub_description.setText(R.string.Agapantus_description);
+                text_lighting.setText(R.string.Agapantus_lighting);
+                text_temperature.setText(R.string.Agapantus_temp);
+                water_text2.setText(R.string.Agapantus_water);
+                feeding_text.setText(R.string.Agapantus_feeding);
+                break;
+            case "Аглаонема изменчивая":
+                sub_description.setText(R.string.aglaonema_description);
+                text_lighting.setText(R.string.aglaonema_lighting);
+                text_temperature.setText(R.string.aglaonema_temp);
+                water_text2.setText(R.string.aglaonema_water);
+                feeding_text.setText(R.string.aglaonema_feeding);
+                break;
+            case "Адениум":
+                sub_description.setText(R.string.adenium_description);
+                text_lighting.setText(R.string.adenium_lighting);
+                text_temperature.setText(R.string.adenium_temp);
+                water_text2.setText(R.string.adenium_water);
+                feeding_text.setText(R.string.adenium_feeding);
+                break;
+            case "Роза":
+                sub_description.setText(R.string.rose_description);
+                text_lighting.setText(R.string.rose_lighting);
+                text_temperature.setText(R.string.rose_temp);
+                water_text2.setText(R.string.rose_water);
+                feeding_text.setText(R.string.rose_feeding);
+                break;
+            case "Лилия":
+                sub_description.setText(R.string.lílium_description);
+                text_lighting.setText(R.string.lílium_lighting);
+                text_temperature.setText(R.string.lílium_temp);
+                water_text2.setText(R.string.lílium_water);
+                feeding_text.setText(R.string.lílium_feeding);
+                break;
+            case "Клюква":
+                sub_description.setText(R.string.klukva_description);
+                text_lighting.setText(R.string.klukva_lighting);
+                text_temperature.setText(R.string.klukva_temp);
+                water_text2.setText(R.string.klukva_water);
+                feeding_text.setText(R.string.klukva_feeding);
+                break;
         }
-//        View.OnClickListener oclDescription = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                    if(sub_description.getVisibility() != view.VISIBLE) {
-//                        sub_description.setVisibility(View.VISIBLE);
-//                        sub_description.setText("sfdgsg sfgfh sdfhssh shfdhhshssf");
-//                    }
-//                    else
-//                    {
-//                        sub_description.setVisibility(View.GONE);
-//                    }
-//            }
-//
-//        };
-//        description.setOnClickListener(oclDescription);
+
+        View.OnClickListener oclDescription = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(sub_description.getVisibility() != view.VISIBLE) {
+                    sub_description.setVisibility(View.VISIBLE);
+
+                }
+                else
+                {
+                    sub_description.setVisibility(View.GONE);
+                }
+            }
+
+        };
+        description.setOnClickListener(oclDescription);
 
         RelativeLayout lighting = (RelativeLayout) findViewById(R.id.lightning);
-        final TextView text_lighting = (TextView) findViewById(R.id.lightning_text);
+
         View.OnClickListener oclLighting = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (text_lighting.getVisibility() != view.VISIBLE) {
                     text_lighting.setVisibility(View.VISIBLE);
-                    text_lighting.setText("Оообаа наааа !");
+
                 }
                 else{
                     text_lighting.setVisibility(View.GONE);
@@ -98,13 +181,13 @@ public class Aboutflower extends AppCompatActivity {
         lighting.setOnClickListener(oclLighting);
 
         RelativeLayout temperature2 = (RelativeLayout) findViewById(R.id.temperature);
-        final TextView text_temperature =(TextView) findViewById(R.id.temperature_text);
+
         View.OnClickListener oclTemperature = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(text_temperature.getVisibility() != View.VISIBLE) {
                     text_temperature.setVisibility(View.VISIBLE);
-                    text_temperature.setText("Агонь пожар вызывай 03");
+
                 }
                 else {
                     text_temperature.setVisibility(View.GONE);
@@ -114,13 +197,13 @@ public class Aboutflower extends AppCompatActivity {
         temperature2.setOnClickListener(oclTemperature);
 
         RelativeLayout watering =  (RelativeLayout)  findViewById(R.id.watering);
-        final TextView water_text2= (TextView) findViewById(R.id.watering_text);
+
         View.OnClickListener oclWatering = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(water_text2.getVisibility() != View.VISIBLE){
-                water_text2.setVisibility(View.VISIBLE);
-                water_text2.setText("Много инфы о том что надо поливать блаб аблабла\n Поливать не забывать \n Пол литра за три дня...");}
+                    water_text2.setVisibility(View.VISIBLE);
+                   }
                 else {
                     water_text2.setVisibility(View.GONE);
                 }
@@ -130,13 +213,13 @@ public class Aboutflower extends AppCompatActivity {
         watering.setOnClickListener(oclWatering);
 
         RelativeLayout feeding = (RelativeLayout) findViewById(R.id.feeding);
-        final TextView feeding_text = (TextView) findViewById(R.id.feeding_text);
+
         View.OnClickListener oclFeeding = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(feeding_text.getVisibility() != View.VISIBLE){
-                feeding_text.setVisibility(View.VISIBLE);
-                feeding_text.setText("А еще нады удобрения подсыпать\n c землей чего-нибудь делать");}
+                    feeding_text.setVisibility(View.VISIBLE);
+                   }
                 else {
                     feeding_text.setVisibility(View.GONE);
                 }
