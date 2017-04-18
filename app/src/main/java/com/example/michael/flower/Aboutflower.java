@@ -35,7 +35,7 @@ public class Aboutflower extends AppCompatActivity {
         TextView temperature = (TextView) findViewById(R.id.gradusnik);
         temperature.setText("15-20");
 
-        boolean flag = false;
+
         RelativeLayout description = (RelativeLayout) findViewById(R.id.short_description);
         final TextView sub_description = (TextView) findViewById(R.id.short_des_text);
         final TextView text_lighting = (TextView) findViewById(R.id.lightning_text);
