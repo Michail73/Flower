@@ -45,7 +45,6 @@ public class Aboutflower extends AppCompatActivity {
 
         switch (title){
             case "Абелия":
-
                 sub_description.setText(getString(R.string.abelia_description));
                 text_lighting.setText(R.string.abelia_lighting);
                 text_temperature.setText(R.string.abelia_temperature);
