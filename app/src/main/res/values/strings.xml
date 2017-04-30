@@ -136,22 +136,22 @@
 
     
     <string-array name="days">
-        <item>1 день</item>
-        <item>2 дня</item>
-        <item>3 дня</item>
-        <item>4 дня</item>
-        <item>5 дней</item>
-        <item>6 дней</item>
-        <item>7 дней</item>
-        <item>8 дней</item>
-        <item>9 дней</item>
-        <item>11 дней</item>
-        <item>12 дней</item>
-        <item>13 дней</item>
-        <item>14 дней</item>
-        <item>15 дней</item>
-        <item>16 дней</item>
-    </string-array>
+    <item>1 день</item>
+    <item>2 дня</item>
+    <item>3 дня</item>
+    <item>4 дня</item>
+    <item>5 дней</item>
+    <item>6 дней</item>
+    <item>7 дней</item>
+    <item>8 дней</item>
+    <item>9 дней</item>
+    <item>11 дней</item>
+    <item>12 дней</item>
+    <item>13 дней</item>
+    <item>14 дней</item>
+    <item>15 дней</item>
+    <item>16 дней</item>
+</string-array>
     <string-array name="mode">
         <item>Авто</item>
         <item>Ручной режим</item>

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class Aboutflower extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,7 @@ public class Aboutflower extends AppCompatActivity {
         //View view = inflater.inflate(R.layout.activity_aboutflower, null);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        String title = getIntent().getStringExtra("Title");
+        final String title = getIntent().getStringExtra("Title");
 
         //setTitle(title);
         toolbar.setTitle(title);
@@ -231,6 +232,7 @@ public class Aboutflower extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Aboutflower.this, Addition.class);
+                intent.putExtra("Title", title);
                 startActivity(intent);
             }
         };

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
+import android.icu.text.AlphabeticIndex;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -24,12 +25,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
 public class Addition extends AppCompatActivity {
 
-    private EditText editTextDate, editTextDate2;
+    private EditText editTextDate, editTextDate2,editTextDiscr;
+
 
     // делаем переменные даты/времени полями, т.к. в реальных
 
@@ -57,8 +60,15 @@ public class Addition extends AppCompatActivity {
 
         editTextDate = (EditText) findViewById(R.id.date1);
         editTextDate2 = (EditText) findViewById(R.id.date2);
+        TextView nameofplant = (TextView) findViewById(R.id.name);
+        editTextDiscr = (EditText) findViewById(R.id.description);
 
+        final String title = getIntent().getStringExtra("Title");
+        //nameofplant.setText(title);
 
+        final String descrp = editTextDate.getText().toString();
+        String descrp5 = "adsf";
+        nameofplant.setText(descrp);
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +76,7 @@ public class Addition extends AppCompatActivity {
                 mode = 1;
             }
         });
+
 
         editTextDate.setShowSoftInputOnFocus(false);
 
@@ -102,6 +113,8 @@ public class Addition extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Addition.this, MyPlants.class);
+                //intent.putExtra("Title", title);
+                intent.putExtra("Description", descrp);
                 startActivity(intent);
             }
         };
@@ -177,7 +190,7 @@ public class Addition extends AppCompatActivity {
 
         NotificationManager notificationManager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
-
+        notificationManager.notify(NOTIFY_ID, notification);
 
     }
 
