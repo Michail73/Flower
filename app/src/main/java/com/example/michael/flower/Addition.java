@@ -1,11 +1,14 @@
 package com.example.michael.flower;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.icu.text.AlphabeticIndex;
@@ -26,6 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -39,7 +43,13 @@ public class Addition extends AppCompatActivity {
     private int mYear, mMonth, mDay;
 
     int mode = 0;  //переменная для переключения на нужную часть кода в callbackdate для отображения editext
-
+    int hr = 0, day = 0, week = 0;
+    int min = 0;
+    int sec = 0;
+    int result = 1;
+    AlarmManager alarmManager;
+    PendingIntent pendingIntent;
+    BroadcastReceiver mReceiver;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -52,23 +62,22 @@ public class Addition extends AppCompatActivity {
 //        setSupportActionBar(mActionBarToolbar);
         setTitle("Добавление");
 
-
+        RegisterAlarmBroadcast();
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        final EditText edDays = (EditText) findViewById(R.id.day);
         editTextDate = (EditText) findViewById(R.id.date1);
         editTextDate2 = (EditText) findViewById(R.id.date2);
         TextView nameofplant = (TextView) findViewById(R.id.name);
         editTextDiscr = (EditText) findViewById(R.id.description);
 
         final String title = getIntent().getStringExtra("Title");
-        //nameofplant.setText(title);
 
-        final String descrp = editTextDate.getText().toString();
-        String descrp5 = "adsf";
-        nameofplant.setText(descrp);
+        final String[] descrp = new String[1];
+
+        nameofplant.setText(title);
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,9 +121,24 @@ public class Addition extends AppCompatActivity {
                 View.OnClickListener oclbtn = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String sday = edDays.getText().toString();
+
+                if(sday.equals(""))
+                    day = 0;
+                else {
+                    day = Integer.parseInt(edDays.getText().toString());
+                    day=day*1000;
+                    // day=day*60*60*1000*24;
+                }
+                result = day;
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), result , pendingIntent);
+
+
+                descrp[0] = editTextDiscr.getText().toString();
                 Intent intent = new Intent(Addition.this, MyPlants.class);
-                //intent.putExtra("Title", title);
-                intent.putExtra("Description", descrp);
+                intent.putExtra("Title", title);
+                intent.putExtra("Description", descrp[0]);
                 startActivity(intent);
             }
         };
@@ -122,6 +146,8 @@ public class Addition extends AppCompatActivity {
         savebtn.setOnClickListener(oclbtn);
 
     }
+
+
 
     private void callDatePicker() {
         // получаем текущую дату
@@ -150,11 +176,11 @@ public class Addition extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
+//        return true;
+//    }
 
 
 
@@ -217,5 +243,38 @@ public class Addition extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(1, notification);
     }
+
+
+
+    @Override
+    protected void onDestroy() {
+       unregisterReceiver(mReceiver);
+        super.onDestroy();
+    }
+
+
+
+    private void RegisterAlarmBroadcast() {
+        mReceiver = new BroadcastReceiver() {
+            // private static final String TAG = "Alarm Example Receiver";
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Toast.makeText(context, "Время поливать свои растения! ", Toast.LENGTH_SHORT).show();
+
+
+            }
+        };
+
+        registerReceiver(mReceiver, new IntentFilter("sample"));
+        pendingIntent = PendingIntent.getBroadcast(this, 0, new Intent("sample"), 0);
+        alarmManager = (AlarmManager)(this.getSystemService(Context.ALARM_SERVICE));
+    }
+
+    private void UnregisterAlarmBroadcast() {
+        alarmManager.cancel(pendingIntent);
+        getBaseContext().unregisterReceiver(mReceiver);
+    }
+
 
 }

@@ -8,24 +8,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.SimpleAdapter;
 
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
-import static com.example.michael.flower.R.attr.colorPrimaryDark;
+
 import static com.example.michael.flower.R.layout.activity_my_plants;
 
 public class MyPlants extends AppCompatActivity {
+
+
+    private ArrayList<HashMap<String, Object>> mPlantList;
+    private static final String TITLE = "plantname"; // Верхний текст
+    private static final String DESCRIPTION = "description"; // ниже главного
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +37,25 @@ public class MyPlants extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         String Description = getIntent().getStringExtra("Description");
-        TextView Test = (TextView) findViewById(R.id.test);
-
-        Test.setText(Description);
+        String Title = getIntent().getStringExtra("Title");
 
         // получаем экземпляр элемента ListView
         ListView listView = (ListView)findViewById(R.id.listView);
-        toolbar.setTitle(Description);
-// определяем массив типа String
-        final String[] catNames = new String[] {
-                "Рыжик", Description, "Мурзик", "Мурка", "Васька",
-                "Томасина", "Кристина", "Пушок", "Дымка", "Кузя",
-                "Китти", "Масяня", "Симба"
-        };
 
-// используем адаптер данных
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, catNames);
+
+
+
+        // создаем массив списков
+        mPlantList = new ArrayList<HashMap<String, Object>>();
+        HashMap<String, Object> hm;
+
+        hm = new HashMap<>();
+        hm.put(TITLE, Title); // Название
+        hm.put(DESCRIPTION, Description); // Описание
+        mPlantList.add(hm);
+        SimpleAdapter adapter = new SimpleAdapter(this, mPlantList,
+                R.layout.list_item, new String[]{TITLE, DESCRIPTION},
+                new int[]{R.id.text1, R.id.text2});
 
         listView.setAdapter(adapter);
 
