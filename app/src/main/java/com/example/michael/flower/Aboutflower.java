@@ -19,7 +19,7 @@ public class Aboutflower extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aboutflower);
-        //View view = inflater.inflate(R.layout.activity_aboutflower, null);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         final String title = getIntent().getStringExtra("Title");

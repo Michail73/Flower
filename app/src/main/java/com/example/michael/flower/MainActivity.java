@@ -33,8 +33,8 @@ public class MainActivity extends FragmentActivity {
 
 
         Tsvetok t =new Tsvetok();
-        t.setName("Hui");
-        t.setDescription("v rot");
+        t.setName("name");
+        t.setDescription("desrp");
         DBHelper.getINSTANCE().write(t);
 
         pager = (ViewPager) findViewById(R.id.pager);
