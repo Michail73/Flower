@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.StringTokenizer;
 
 public class Addition extends AppCompatActivity {
 
@@ -46,7 +47,7 @@ public class Addition extends AppCompatActivity {
     int hr = 0, day = 0, week = 0;
     int min = 0;
     int sec = 0;
-    int result = 1;
+    int result = 0;
     AlarmManager alarmManager;
     PendingIntent pendingIntent;
     BroadcastReceiver mReceiver;
@@ -68,6 +69,7 @@ public class Addition extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final EditText edDays = (EditText) findViewById(R.id.day);
+        final EditText edWeeks = (EditText) findViewById(R.id.week);
         editTextDate = (EditText) findViewById(R.id.date1);
         editTextDate2 = (EditText) findViewById(R.id.date2);
         TextView nameofplant = (TextView) findViewById(R.id.name);
@@ -123,15 +125,23 @@ public class Addition extends AppCompatActivity {
             public void onClick(View view) {
 
                 String sday = edDays.getText().toString();
+                String sweek = edWeeks.getText().toString();
 
                 if(sday.equals(""))
                     day = 0;
                 else {
                     day = Integer.parseInt(edDays.getText().toString());
-                    day=day*1000;
-                    // day=day*60*60*1000*24;
+
+                    //day=day*1000;
+                     day=day*60*60*1000*24;
                 }
-                result = day;
+                if(sweek.equals(""))
+                    week = 0;
+                else {
+                    week = Integer.parseInt(edWeeks.getText().toString());
+                    week = week*60*60*1000*24*7;
+                }
+                result = day+week;
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), result , pendingIntent);
 
 
@@ -140,12 +150,52 @@ public class Addition extends AppCompatActivity {
                 intent.putExtra("Title", title);
                 intent.putExtra("Description", descrp[0]);
                 startActivity(intent);
+
+
+
+
+
+                sendActionNotification();
+
             }
-        };
+        final int NOTIFY_ID = 101;
+                    private void sendActionNotification() {
+            Context context = getApplicationContext();
+
+            Intent notificationIntent = new Intent(context, Addition.class);
+            PendingIntent contentIntent = PendingIntent.getActivity(context,
+                    0, notificationIntent,
+                    PendingIntent.FLAG_CANCEL_CURRENT);
+
+            Resources res = context.getResources();
+            Notification.Builder builder = new Notification.Builder(context);
+
+            builder.setContentIntent(contentIntent)
+                    .setSmallIcon(R.drawable.ic_local_florist_black_24dp)
+                    // большая картинка
+                    .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_local_florist_black_48dp))
+                    //.setTicker(res.getString(R.string.warning)) // текст в строке состояния
+                    .setTicker("Последнее китайское предупреждение!")
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    //.setContentTitle(res.getString(R.string.notifytitle)) // Заголовок уведомления
+                    .setContentTitle("Напоминание")
+                    //.setContentText(res.getString(R.string.notifytext))
+                    .setContentText("Скоро нужно будет полить свои растения"); // Текст уведомления
+
+            // Notification notification = builder.getNotification(); // до API 16
+            Notification notification = builder.build();
+
+            NotificationManager notificationManager = (NotificationManager) context
+                    .getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(NOTIFY_ID, notification);
+                    }
+                };
 
         savebtn.setOnClickListener(oclbtn);
 
     }
+
 
 
 
@@ -184,41 +234,7 @@ public class Addition extends AppCompatActivity {
 
 
 
-    private static final int NOTIFY_ID = 101;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void sendActionNotification(View view) {
-        Context context = getApplicationContext();
-
-        Intent notificationIntent = new Intent(context, Addition.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(context,
-                0, notificationIntent,
-                PendingIntent.FLAG_CANCEL_CURRENT);
-
-        Resources res = context.getResources();
-        Notification.Builder builder = new Notification.Builder(context);
-
-        builder.setContentIntent(contentIntent)
-                .setSmallIcon(R.drawable.ic_local_florist_black_24dp)
-                // большая картинка
-                .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_local_florist_black_48dp))
-                //.setTicker(res.getString(R.string.warning)) // текст в строке состояния
-                .setTicker("Последнее китайское предупреждение!")
-                .setWhen(System.currentTimeMillis())
-                .setAutoCancel(true)
-                //.setContentTitle(res.getString(R.string.notifytitle)) // Заголовок уведомления
-                .setContentTitle("Напоминание")
-                //.setContentText(res.getString(R.string.notifytext))
-                .setContentText("Пора покормить кота"); // Текст уведомления
-
-        // Notification notification = builder.getNotification(); // до API 16
-        Notification notification = builder.build();
-
-        NotificationManager notificationManager = (NotificationManager) context
-                .getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFY_ID, notification);
-
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void sendBigTextStyleNotification(View view) {
@@ -260,9 +276,7 @@ public class Addition extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onReceive(Context context, Intent intent) {
-                Toast.makeText(context, "Время поливать свои растения! ", Toast.LENGTH_SHORT).show();
-
-
+                Toast.makeText(context, "Время поливать свои растения! ", Toast.LENGTH_LONG).show();
             }
         };
 

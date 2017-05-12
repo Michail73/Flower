@@ -145,25 +145,35 @@
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/day"
+                android:inputType="number"
                 android:layout_below="@+id/spinner2"
-                android:hint="days"
+                android:hint="Дни"
                 />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Notification"
-                android:layout_below="@+id/day"
-                android:id="@+id/notfication"
-                android:onClick="sendBigTextStyleNotification"
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/week"
+                android:inputType="number"
+                android:layout_toRightOf="@+id/day"
+                android:layout_below="@+id/spinner2"
+                android:hint="Недели"
                 />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="klimov"
-                android:layout_below="@+id/notfication"
-                android:id="@+id/klimov"
-                android:onClick="sendActionNotification"
-                />
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="Notification"-->
+                <!--android:layout_below="@+id/day"-->
+                <!--android:id="@+id/notfication"-->
+                <!--android:onClick="sendBigTextStyleNotification"-->
+                <!--/>-->
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="klimov"-->
+                <!--android:layout_below="@+id/notfication"-->
+                <!--android:id="@+id/klimov"-->
+                <!--android:onClick="sendActionNotification"-->
+                <!--/>-->
 
 
 

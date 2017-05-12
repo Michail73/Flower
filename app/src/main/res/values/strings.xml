@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ViewPager</string>
+    <string name="app_name">Цветочный менеджер</string>
     <string name="info">"Экран номер "</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
