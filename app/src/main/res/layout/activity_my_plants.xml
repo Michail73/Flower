@@ -27,34 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp">
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="104dp"-->
-        <!--android:src="@drawable/daisy"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:id="@+id/first"-->
-
-        <!--/>-->
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="104dp"-->
-        <!--android:layout_marginTop="16dp"-->
-        <!--android:src="@drawable/blue"-->
-        <!--android:layout_below="@id/first"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:id="@+id/second"-->
-
-        <!--/>-->
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="104dp"-->
-        <!--android:layout_below="@id/second"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:layout_marginTop="16dp"-->
-        <!--android:id="@+id/third"-->
-        <!--android:src="@drawable/pink"-->
-        <!--/>-->
-
+   
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"

@@ -145,6 +145,13 @@ public class Aboutflower extends AppCompatActivity {
                 water_text2.setText(R.string.klukva_water);
                 feeding_text.setText(R.string.klukva_feeding);
                 break;
+            case "МАРИХУАНА":
+                sub_description.setText(R.string.weed_description);
+                text_lighting.setText(R.string.weed_lighting);
+                text_temperature.setText(R.string.weed_temp);
+                water_text2.setText(R.string.weed_water);
+                feeding_text.setText(R.string.weed_feeding);
+                break;
         }
 
         View.OnClickListener oclDescription = new View.OnClickListener() {
